@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div id="wrap">
+        <h2 id="clock">00:00</h2>
+        <form id="login-form">
+            <input required maxlength="15" type="text" />
+        </form>
+        <div id="page" style="display: none;">
+            <div id="header">
+                <h1 id="greeting"></h1>
+                <form id="google" action="https://www.google.com/search" method="GET">
+                    <input placeholder="Google 검색 또는 URL 입력" type="text" name="q" required/>
+                </form>
+                <div id="header-right">
+                    <div id="date">
+                        <h3 id="day">
+                            </h>
+                            <h3 id="mini-clock">00:00</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="darkMode" id="main">
+                <div class="darkMode" id="left-box">
+                    <span id="title">Bookmarks</span>
+                    <div id="bmBox">
+                        <button class="darkMode" title="Google" id="bmBtn" onclick="window.open('https://www.google.com')">
+              <img id="img" src="./img/google.png"/>
+            </button>
+                        <button class="darkMode" title="Gmail" id="bmBtn" onclick="window.open('http://mail.google.com')">
+              <img id="img" src="./img/gmail.png"/>
+            </button>
+                        <button class="darkMode" title="Youtube" id="bmBtn" onclick="window.open('https://youtube.com')">
+              <img id="img" src="./img/youtube.png"/>
+            </button>
+                        <button class="darkMode" title="Naver" id="bmBtn" onclick="window.open('https://www.naver.com')">
+              <img id="img" src="./img/naver.png"/>
+            </button>
+                        <button class="darkMode" title="GitHub" id="bmBtn" onclick="window.open('https://github.com')">
+              <img id="img" src="./img/github.png"/>
+            </button>
+                        <button class="darkMode" title="Nomad Coders" id="bmBtn" onclick="window.open('https://nomadcoders.co')">
+              <img id="img" src="./img/nomad.svg"/>
+            </button>
+                    </div>
+                </div>
+                <div class="darkMode" id="box">
+                    <span id="title">Today's To Do</span>
+                    <form id="todo-form">
+                        <input type="text" placeholder="What will you do today?" required />
+                    </form>
+                    <div id="todo-list"></div>
+                </div>
+                <div id="fake-box">
+                    <div class="darkMode" id="innerBox1">
+                        <span id="title">Weather</span>
+                        <img id="weatherIcon" />
+                        <div id="weather">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="darkMode" id="innerBox2">
+                        <span id="title">Quote</span>
+                        <div id="quote">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="darkMode" id="right-box">
+                    <button class="darkMode" title="Change Background Color" id="colorBtn">
+            <img id="img" src="./img/color.png"/>
+          </button>
+                    <button class="darkMode" title="Dark Mode" id="darkMode">
+            <img id="img" src="./img/darkmode.png"/>
+          </button>
+                    <button class="darkMode" title="Log Out" id="outBtn">
+            <img id="img" src="./img/logout.png"/>
+          </button>
+                </div>
+            </div>
+            <div id="copyright">
+                Copyright 2022. taegeum Lee All Rights Reserved.
+            </div>
+        </div>
+    </div>
+    <script src="js/greeting.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/quotes.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+    <script>
+        const login_Form = document.querySelector('#login-form');
+        login_Form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            setTimeout(() => {
+                const username = localStorage.getItem(USERNAME_KEY);
+                const greeting = document.querySelector('#greeting');
+                greeting.innerText = `Welcome ${username}!`
+                new TypeIt('#greeting')
+                    .go();
+            }, 3000)
+        });
+        const username = localStorage.getItem(USERNAME_KEY);
+        greeting.innerText = `Welcome ${username}!`
+        new TypeIt('#login-form input', {
+                strings: `What is your name?`,
+            })
+            .empty()
+            .go()
+        setTimeout(() => {
+            const login_input = login_Form.querySelector('input');
+            login_input.placeholder = "What is your name?"
+        }, 1000)
+    </script>
+</body>
+
+</html>
